@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+const App = () => {
+  const [ativo, setAtivo] = React.useState(false);
+  const [dados, setDados] = React.useState({ nome: 'Felipe', idade: '31' });
+
+  function handleClick() {
+    setAtivo(!ativo);
+    setDados({ ...dados, faculdade: 'Não possui' });
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={handleClick}>{ativo ? 'Ativo' : 'Inativo'}</button>
+      <p>{dados.nome}</p>
+      <p>{dados.idade}</p>
+      <p>{dados.faculdade}</p>
     </div>
   );
-}
+};
 
 export default App;
